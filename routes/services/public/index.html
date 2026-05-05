@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Resume Analyzer - Optimize Your Resume</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="header">
+      <div class="container">
+        <h1>🤖 AI Resume Analyzer</h1>
+        <p>Get instant feedback on your resume with AI-powered analysis</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <div class="content">
+        <!-- Upload Section -->
+        <section class="upload-section">
+          <div class="tabs">
+            <button class="tab-btn active" data-tab="upload">Upload File</button>
+            <button class="tab-btn" data-tab="text">Paste Text</button>
+          </div>
+
+          <div class="tab-content" id="upload" style="display: block;">
+            <div class="upload-area" id="uploadArea">
+              <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="17 8 12 3 7 8"></polyline>
+                <line x1="12" y1="3" x2="12" y2="15"></line>
+              </svg>
+              <h3>Drop your resume here</h3>
+              <p>or click to browse (PDF, TXT)</p>
+              <input type="file" id="fileInput" accept=".pdf,.txt" style="display: none;">
+            </div>
+          </div>
+
+          <div class="tab-content" id="text" style="display: none;">
+            <textarea id="resumeText" placeholder="Paste your resume text here..." rows="15"></textarea>
+            <button class="btn btn-primary" onclick="analyzeText()">Analyze Resume</button>
+          </div>
+        </section>
+
+        <!-- Loading Spinner -->
+        <div id="loading" class="loading" style="display: none;">
+          <div class="spinner"></div>
+          <p>Analyzing your resume...</p>
+        </div>
+
+        <!-- Results Section -->
+        <section id="results" class="results-section" style="display: none;">
+          <div class="score-card">
+            <div class="score-circle">
+              <svg viewBox="0 0 100 100">
+                <circle cx="50" cy="50" r="45" class="circle-bg"></circle>
+                <circle cx="50" cy="50" r="45" class="circle-progress" id="scoreCircle"></circle>
+              </svg>
+              <div class="score-text">
+                <span class="score-number" id="scoreNumber">0</span>
+                <span class="score-label">/100</span>
+              </div>
+            </div>
+            <div class="score-details">
+              <h3 id="scoreTitle">Resume Score</h3>
+              <p id="scoreMessage"></p>
+            </div>
+          </div>
+
+          <!-- Basic Info -->
+          <div class="info-card">
+            <h3>📋 Basic Information</h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <label>Email:</label>
+                <span id="emailDisplay">-</span>
+              </div>
+              <div class="info-item">
+                <label>Phone:</label>
+                <span id="phoneDisplay">-</span>
+              </div>
+              <div class="info-item">
+                <label>LinkedIn:</label>
+                <span id="linkedinDisplay">-</span>
+              </div>
+              <div class="info-item">
+                <label>Suggested Job Title:</label>
+                <span id="jobTitleDisplay">-</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="skills-card">
+            <h3>💡 Detected Skills</h3>
+            <div id="skillsContainer" class="skills-container"></div>
+          </div>
+
+          <!-- Sections Status -->
+          <div class="sections-card">
+            <h3>📑 Resume Sections</h3>
+            <div class="sections-grid" id="sectionsContainer"></div>
+          </div>
+
+          <!-- Analysis Checks -->
+          <div class="checks-card">
+            <h3>✅ Quality Checks</h3>
+            <div id="checksContainer" class="checks-list"></div>
+          </div>
+
+          <!-- Recommendations -->
+          <div class="recommendations-card">
+            <h3>💡 Recommendations</h3>
+            <ul id="recommendationsContainer" class="recommendations-list"></ul>
+          </div>
+
+          <button class="btn btn-secondary" onclick="resetAnalysis()">Analyze Another Resume</button>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2024 AI Resume Analyzer. Powered by AI Technology.</p>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
