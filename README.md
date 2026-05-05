@@ -1,4 +1,5 @@
-# AI Resume Analyzer
+# AI Resume Analyzer  note- imp - there is some issue  in this some where i am not getting so not able to host wait till i get the issue you can also help if you want 
+
 
 A production-ready web application that uses AI to analyze and provide feedback on resumes. Get instant insights into your resume's strengths and areas for improvement.
 
