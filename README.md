@@ -118,4 +118,4 @@ MIT License
 
 ## 👨‍💻 Author
 
-Created with ❤️ by AI Resume Analyzer Team
+Developed by Hemanshuvp_631
